@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<link href="https://fonts.cdnfonts.com/css/vividly" rel="stylesheet">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cerby Plush Timer</title>
+</head>
+
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: 'Vividly', sans-serif;
+    }
+
+    body {
+        height: 100vh;
+        background-color: black;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: blueviolet;
+    }
+
+    header {
+        text-align: center;
+        font-size: 4em;
+        margin-top: 10rem;
+        margin-bottom: 4rem;
+        max-width: 80vw;
+    }
+
+    .timer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 90px;
+        max-width: 70vw;
+        z-index: 1;
+    }
+
+    .time {
+        text-align: center;
+        font-size: 4rem;
+        flex: 0 1 auto;
+        align-items: center;
+    }
+
+    footer {
+        text-align: center;
+        color: grey;
+        margin-top: auto;
+        margin-bottom: 1rem;
+    }
+
+    .cerby_plush {
+        position: absolute;
+        z-index: 0;
+    }
+</style>
+
+
+<body>
+    <header>
+        <h1>
+            Countdown till Cerby Plush Shipping
+        </h1>
+    </header>
+    <div class="timer">
+        <div class="time">
+            <h2 id="days">00</h2>
+            <p>Days</p>
+        </div>
+        <div class="time">
+            <h2 id="hours">00</h2>
+            <p>Hours</p>
+        </div>
+        <div class="time">
+            <h2 id="minutes">00</h2>
+            <p>Minutes</p>
+        </div>
+        <div class="time">
+            <h2 id="seconds">00</h2>
+            <p>Seconds</p>
+        </div>
+    </div>
+    <img id="cerby_plush" src="cerby_plush.webp" onclick="var audio = new Audio('SqueakyToy.wav'); audio.play();">
+    <footer>
+        <p>For Minawan with love, by AkiWan</p>
+        <p>Credits to SamsaWan</p>
+    </footer>
+
+    <script>
+        const Days = document.getElementById('days');
+        const Hours = document.getElementById('hours');
+        const Minutes = document.getElementById('minutes');
+        const Seconds = document.getElementById('seconds');
+
+        const targetDate = new Date("2025-05-10T00:00:00Z").getTime();
+
+        function timer() {
+            const currentDate = new Date().getTime();
+            const distance = targetDate - currentDate;
+
+            const days = Math.floor(distance / 1000 / 60 / 60 / 24);
+            const hours = Math.floor(distance / 1000 / 60 / 60) % 24;
+            const minutes = Math.floor(distance / 1000 / 60) % 60;
+            const seconds = Math.floor(distance / 1000) % 60;
+
+            Days.innerHTML = days;
+            Hours.innerHTML = hours;
+            Minutes.innerHTML = minutes;
+            Seconds.innerHTML = seconds;
+
+            if (distance < 0) {
+                Days.innerHTML = "00";
+                Hours.innerHTML = "00";
+                Minutes.innerHTML = "00";
+                Seconds.innerHTML = "00";
+            }
+        }
+
+        setInterval(timer, 1000);
+    </script>
+</body>
+
+</html>
