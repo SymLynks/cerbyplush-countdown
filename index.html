@@ -34,18 +34,19 @@
         max-width: 80vw;
     }
 
+
     .timer {
         display: flex;
         flex-wrap: wrap;
-        gap: 90px;
+        flex: 0 1 auto;
         max-width: 70vw;
+        gap: 60px;
         z-index: 1;
     }
 
     .time {
         text-align: center;
         font-size: 4rem;
-        flex: 0 1 auto;
         align-items: center;
     }
 
@@ -54,12 +55,24 @@
         color: grey;
         margin-top: auto;
         margin-bottom: 1rem;
+        z-index: 1;
     }
 
     #cerby_plush {
         position: absolute;
         max-height: 50vh;
         z-index: 0;
+    }
+
+    @media screen and (max-width:769px) {
+        body {
+            font-size: 0.75vh;
+            margin-top: 1vh;
+        }
+
+        .time {
+            font-size: 3vh;
+        }
     }
 </style>
 
