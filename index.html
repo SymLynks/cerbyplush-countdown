@@ -1,145 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <link href="https://fonts.cdnfonts.com/css/vividly" rel="stylesheet">
-
+<link href='styles.css' rel='stylesheet'>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cerby Plush Timer</title>
+    <title>Countdown till Cerby Plush shipping</title>
 </head>
-
-<style>
-    * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-        font-family: 'Vividly', sans-serif;
-    }
-
-    body {
-        height: 100vh;
-        background-color: black;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        color: blueviolet;
-    }
-
-    header {
-        text-align: center;
-        font-size: 4em;
-        margin-top: 10rem;
-        margin-bottom: 4rem;
-        max-width: 80vw;
-        z-index: 1;
-    }
-
-
-    .timer {
-        display: flex;
-        flex-wrap: wrap;
-        flex: 0 1 auto;
-        max-width: 70vw;
-        gap: 60px;
-        z-index: 1;
-    }
-
-    .time {
-        text-align: center;
-        font-size: 4rem;
-        align-items: center;
-    }
-
-    footer {
-        text-align: center;
-        color: grey;
-        margin-top: auto;
-        margin-bottom: 1rem;
-        z-index: 1;
-    }
-
-    #cerby_plush {
-        position: absolute;
-        max-height: 50vh;
-        z-index: 0;
-    }
-
-    @media screen and (max-width:769px) {
-        body {
-            font-size: 0.75vh;
-            margin-top: 1vh;
-        }
-
-        .time {
-            font-size: 3vh;
-        }
-    }
-</style>
-
-
+</head>
 <body>
     <header>
-        <h1>
-            Countdown till Cerby Plush Shipping
-        </h1>
+        <h1>Cerby Plush Shipment Countdown</h1>
     </header>
-    <div class="timer">
-        <div class="time">
-            <h2 id="days">00</h2>
-            <p>Days</p>
+    <main>
+        <img class="cerby_plush" src="cerby_plush.webp" onclick="new Audio('SqueakyToy.wav').play();">
+        <div class="countdown">
+            <div class="countdown-item">
+                <span class="days">00</span>
+                <span class="label">days</span>
+            </div>
+            <div class="countdown-item">
+                <span class="hours">00</span>
+                <span class="label">hours</span>
+            </div>
+            <div class="countdown-item">
+                <span class="minutes">00</span>
+                <span class="label">minutes</span>
+            </div>
+            <div class="countdown-item">
+                <span class="seconds">00</span>
+                <span class="label">seconds</span>
+            </div>
         </div>
-        <div class="time">
-            <h2 id="hours">00</h2>
-            <p>Hours</p>
-        </div>
-        <div class="time">
-            <h2 id="minutes">00</h2>
-            <p>Minutes</p>
-        </div>
-        <div class="time">
-            <h2 id="seconds">00</h2>
-            <p>Seconds</p>
-        </div>
-    </div>
-    <img id="cerby_plush" src="cerby_plush.webp" onclick="var audio = new Audio('SqueakyToy.wav'); audio.play();">
+    </main>
     <footer>
         <p>For Minawan with love, by AkiWan</p>
         <p>Credits to SamsaWan</p>
     </footer>
-
-    <script>
-        const Days = document.getElementById('days');
-        const Hours = document.getElementById('hours');
-        const Minutes = document.getElementById('minutes');
-        const Seconds = document.getElementById('seconds');
-
-        const targetDate = new Date("2025-05-10T00:00:00Z").getTime();
-
-        function timer() {
-            const currentDate = new Date().getTime();
-            const distance = targetDate - currentDate;
-
-            const days = Math.floor(distance / 1000 / 60 / 60 / 24);
-            const hours = Math.floor(distance / 1000 / 60 / 60) % 24;
-            const minutes = Math.floor(distance / 1000 / 60) % 60;
-            const seconds = Math.floor(distance / 1000) % 60;
-
-            Days.innerHTML = days;
-            Hours.innerHTML = hours;
-            Minutes.innerHTML = minutes;
-            Seconds.innerHTML = seconds;
-
-            if (distance < 0) {
-                Days.innerHTML = "00";
-                Hours.innerHTML = "00";
-                Minutes.innerHTML = "00";
-                Seconds.innerHTML = "00";
-            }
-        }
-
-        setInterval(timer, 1000);
+    <script src="countdown.js">
     </script>
 </body>
-
 </html>
